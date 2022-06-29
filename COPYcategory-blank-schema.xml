@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prestashop>
+<category>
+	<id />
+	<id_parent>15</id_parent>
+	<active>1</active>
+	<id_shop_default />
+	<is_root_category />
+	<position />
+	<date_add />
+	<date_upd />
+	<name><language id="1">Brocha Profesional</language></name>
+	<link_rewrite><language id="1">brocha-profesional</language></link_rewrite>
+	<description><language id="1" /></description>
+	<meta_title><language id="1" /></meta_title>
+	<meta_description><language id="1" /></meta_description>
+	<meta_keywords><language id="1" /></meta_keywords>
+<associations>
+<categories>
+	<category>
+	<id />
+	</category>
+</categories>
+<products>
+	<product>
+	<id />
+	</product>
+</products>
+</associations>
+</category>
+</prestashop>

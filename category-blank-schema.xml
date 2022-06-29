@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
+<category>
+	<id></id>
+	<id_parent></id_parent>
+	<active></active>
+	<id_shop_default></id_shop_default>
+	<is_root_category></is_root_category>
+	<position></position>
+	<date_add></date_add>
+	<date_upd></date_upd>
+	<name><language id="1"></language></name>
+	<link_rewrite><language id="1"></language></link_rewrite>
+	<description><language id="1"></language></description>
+	<meta_title><language id="1"></language></meta_title>
+	<meta_description><language id="1"></language></meta_description>
+	<meta_keywords><language id="1"></language></meta_keywords>
+<associations>
+<categories>
+	<category>
+	<id></id>
+	</category>
+</categories>
+<products>
+	<product>
+	<id></id>
+	</product>
+</products>
+</associations>
+</category>
+</prestashop>
