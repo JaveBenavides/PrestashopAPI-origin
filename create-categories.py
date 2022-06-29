@@ -73,13 +73,10 @@ def create_category(data):
 
 tree = ET.parse(FILENAME)
 for cat in categories[:1]:
-    # print(tree)
-    # id_parent = cat[1]
-    # tree.find('.//id_parent').text = str(id_parent)
-    # tree.find('.//active').text = str(1)
-    # tree.find('.//name/language').text = cat[0].title()
-    # tree.find('.//link_rewrite/language').text = cat[0].lower().replace(" ", "-")
-    # tree.write("COPY" + FILENAME)
-    # print(ET.tostring(tree.getroot()))
-    # break
+    id_parent = cat[1]
+    tree.find('.//id_parent').text = str(id_parent)
+    tree.find('.//active').text = str(1)
+    tree.find('.//name/language').text = cat[0].title()
+    tree.find('.//link_rewrite/language').text = cat[0].lower().replace(" ", "-")
+    tree.write("COPY" + FILENAME)
     create_category(ET.tostring(tree.getroot()))
