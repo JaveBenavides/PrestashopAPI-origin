@@ -72,7 +72,7 @@ def create_category(data):
 
 
 tree = ET.parse(FILENAME)
-for cat in categories[:1]:
+for cat in categories:
     id_parent = cat[1]
     tree.find('.//id_parent').text = str(id_parent)
     tree.find('.//active').text = str(1)
