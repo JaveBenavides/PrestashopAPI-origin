@@ -2,8 +2,8 @@ import requests
 from xml.etree import ElementTree as ET
 
 categories = [
-    ("BROCHA PROFESIONAL", 15),
-    ("FUNDA PARA SET DE BROCHAS", 15),
+    # ("BROCHA PROFESIONAL", 15),
+    # ("FUNDA PARA SET DE BROCHAS", 15),
     ("COSMETIQUERAS", 15),
     ("BRILLO LABIAL", 10),
     ("BRILLO LABIAL FRUTAS", 10),
@@ -61,14 +61,17 @@ FILENAME = "category-blank-schema.xml"
 KEY = "I7YVA346QJZZVH1PLGFF9FSJ642A6DDZ"
 HOST = "@bissusonora.com/api/categories/"
 URL = "http://" + KEY + HOST
-HEADERS = {"Content-Type": "application/xml"}
+HEADERS = {
+    "Content-Type": "application/xml",
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
+    "Authorization": "Basic STdZVkEzNDZRSlpaVkgxUExHRkY5RlNKNjQyQTZERFo6"
+}
 
 
-def create_category(data):
+def create_category():
     with open("COPYcategory-blank-schema.xml") as xml:
-        print(xml)
         r = requests.post(URL, data=xml, headers=HEADERS)
-        print(r.content)
+        print(r.status_code)
 
 
 tree = ET.parse(FILENAME)
@@ -78,5 +81,6 @@ for cat in categories:
     tree.find('.//active').text = str(1)
     tree.find('.//name/language').text = cat[0].title()
     tree.find('.//link_rewrite/language').text = cat[0].lower().replace(" ", "-")
-    tree.write("COPY" + FILENAME)
-    create_category(ET.tostring(tree.getroot()))
+    # print(ET.tostring(tree))
+    tree.write("COPY" + FILENAME, encoding='utf8', method='xml', xml_declaration=True)
+    create_category()
