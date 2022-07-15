@@ -21,8 +21,10 @@ HEADERS = HEADERS = {
     # print(sub['PRODUCTO'][row_number], + - + sub['ID-PARENT'][row_number])
 
 def create_product():
-    with open("pruebaproduct-blank-schema.xml") as xml:
+    with open("Prueba1product-blank-schema.xml") as xml:
         r = requests.post(URL, data=xml, headers=HEADERS)
+        print(r.status_code)
+        print(r.content)
 
 tree = ET.parse(FILENAME)
 for row_number in sub.index:
@@ -33,3 +35,4 @@ for row_number in sub.index:
         tree.find('.//id_category_default').text = str(int(sub['ID-PARENT'][row_number]))
         tree.find('.//category/id').text = str(int(sub['SUB-CATEGORY'][row_number]))
         tree.write("Prueba1" + FILENAME, encoding='utf8', method='xml', xml_declaration=True)
+        create_product()
