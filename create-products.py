@@ -1,15 +1,16 @@
 import csv
 
-import pandas as pd
+# import pandas as pd
 import requests
 from xml.etree import ElementTree as ET
 
 DATA_FILE = "BISSU CSV(1).csv"
-file_read = pd.read_csv(r'BISSU CSV(1).csv')
+# file_read = pd.read_csv(r'BISSU CSV(1).csv')
 # sub = pd.DataFrame(file_read, columns=['PRODUCTO', 'PRECIO-DE-LISTA', 'MAYOREO-ALTO-VOLUMEN','ID-PARENT'])
 rows = []
 with open(DATA_FILE) as f:
     reader = csv.reader(f)
+    next(reader)
     next(reader)
     for row in reader:
         rows.append([
@@ -23,10 +24,15 @@ FILENAME = "product-blank-schema.xml"
 KEY = "I7YVA346QJZZVH1PLGFF9FSJ642A6DDZ"
 HOST = "@bissusonora.com/api/products/"
 URL = "http://" + KEY + HOST
-HEADERS = HEADERS = {
+HEADERS = {
     "Content-Type": "application/xml",
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
-    "Authorization": "Basic STdZVkEzNDZRSlpaVkgxUExHRkY5RlNKNjQyQTZERFo6"
+    'User-Agent': "PostmanRuntime/7.29.0",
+    "Authorization": "Basic STdZVkEzNDZRSlpaVkgxUExHRkY5RlNKNjQyQTZERFo6",
+    "Accept": "*/*",
+    "Postman-Token": "387208ac-1103-45af-9266-c2d3c9eea34f",
+    "Host": "bissusonora.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
 }
 
 
@@ -35,9 +41,11 @@ HEADERS = HEADERS = {
 
 def create_product():
     with open("Prueba2product-blank-schema.xml") as xml:
+        print(xml)
         r = requests.post(URL, data=xml, headers=HEADERS)
         print(r.status_code)
-        print(r.content)
+        # print(r.content)
+        print()
 
 
 tree = ET.parse(FILENAME)
@@ -50,13 +58,12 @@ tree = ET.parse(FILENAME)
 #         #tree.find('.//category/id').text = str(int(sub['SUB-CATEGORY'][row_number]))
 #         tree.write("Prueba2" + FILENAME, encoding='utf8', method='xml', xml_declaration=True)
 #         #create_product()
-for row in rows:
-    print(row)
-    print(row)
-    tree.find('.//price').text = str(row or "")
-    tree.find('.//wholesale_price').text = str(row or "")
-    tree.find('.//name/language').text = row[0] or ""
-    tree.find('.//id_category_default').text = row[3] or ""
+for row in rows[1:]:
+    print(row[0])
+    tree.find('.//name/language').text = row[0]
+    tree.find('.//price').text = row[1]
+    tree.find('.//wholesale_price').text = row[2]
+    tree.find('.//id_category_default').text = row[3]
     # tree.find('.//category/id').text = str(int(sub['SUB-CATEGORY'][row_number]))
-    tree.write("Prueba2" + FILENAME, encoding='utf8', method='xml', xml_declaration=True)
-    # create_product()
+    tree.write("Prueba2" + FILENAME, encoding='utf8', method='xml')
+    create_product()

@@ -37,8 +37,8 @@
 	<minimal_quantity />
 	<low_stock_threshold />
 	<low_stock_alert />
-	<price>['XIOMARA AMPOLLETA DE LINO 10 ML', '15', '11.9', '17']</price>
-	<wholesale_price>['XIOMARA AMPOLLETA DE LINO 10 ML', '15', '11.9', '17']</wholesale_price>
+	<price>15</price>
+	<wholesale_price>11.9</wholesale_price>
 	<unity />
 	<unit_price_ratio />
 	<additional_shipping_cost />
